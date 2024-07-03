@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
 const Categoria = sequelize.define(
-	'ship',
+	'categoria',
 	{
 		nombre: {
 			type: DataTypes.STRING(),

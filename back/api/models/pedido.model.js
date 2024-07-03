@@ -1,27 +1,22 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
-const Producto = sequelize.define(
-    'producto',
+const Pedido = sequelize.define(
+    'pedido',
     {
+        fechahora: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        ticket: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         nombre: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        precio: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
-        cuantificable: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        },
-        imagen: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        descripcion: {
+        telefono: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -29,6 +24,17 @@ const Producto = sequelize.define(
             type: DataTypes.ENUM('petrer', 'elda'),
             allowNull: false,
         },
+        estado: {
+            type: DataTypes.ENUM('pendiente', 'finalizado', 'preparacion', 'caducado'),
+            allowNull: false,
+        },
+        papelera: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+      
+      
+       
     },
 	{	
 		timestamps: false,
@@ -36,11 +42,11 @@ const Producto = sequelize.define(
 			{
 				unique: true,
 				allowNull: false,
-				fields: ['nombre']
+				fields: ['telefono']
 			},
 
         ]
 	},
 )
 
-module.exports = Producto
+module.exports = Pedido
