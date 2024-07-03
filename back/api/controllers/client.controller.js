@@ -1,3 +1,5 @@
+/*
+
 const Client = require('../models/client.model')
 
 const bcrypt = require('bcrypt')
@@ -82,3 +84,5 @@ module.exports = {
 	updateClient,
 	deleteClient
 }
+
+*/

@@ -1,23 +1,24 @@
-const User = require('../api/models/user.model')
-const Client = require('../api/models/client.model')
-const Ship = require('../api/models/ship.model')
-const Order = require('../api/models/order.model')
+const Usuario = require('../api/models/usuario.model')
+const Categoria = require('../api/models/categoria.model')
+const Producto = require('../api/models/producto.model')
+const Pedido = require('../api/models/pedido.model')
+const Existencia = require('../api/models/existencia.model')
 
-//Many to Many
+
 function addRelationsToModels() {
 	try {
 
-		Order.belongsTo(User);
-		User.hasMany(Order);
+	//ONE TO MANY - categoria - producto
 
-		Ship.belongsTo(Client);
-		Client.hasMany(Ship);
-
-		Order.belongsTo(Ship);
-		Ship.hasOne(Order);
-
-		Order.belongsTo(Client);
-		Client.hasOne(Order);
+	Categoria.hasMany(Producto, {
+		onDelete: "SET NULL",
+		onUpdate: "CASCADE",
+	  });
+	  Producto.belongsTo(Categoria, {
+		onDelete: "CASCADE",
+		onUpdate: "CASCADE",
+	  });
+  
 
 		console.log('Relations added to all models');
 	} catch (error) {

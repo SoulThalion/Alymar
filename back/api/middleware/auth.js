@@ -1,3 +1,5 @@
+/*
+
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 
@@ -34,3 +36,5 @@ const isManager = (req, res, next) => {
 };
 
 module.exports = { checkAuth, isAdmin, isManager };
+
+*/
