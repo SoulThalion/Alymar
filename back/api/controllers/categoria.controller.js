@@ -1,8 +1,5 @@
 const Categoria = require('../models/categoria.model')
 
-const bcrypt = require('bcrypt')
-
-
 async function getAllCategorias(req, res) {
 	try {
 		const categoria = await Categoria.findAll()

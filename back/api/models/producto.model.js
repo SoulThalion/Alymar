@@ -19,7 +19,7 @@ const Producto = sequelize.define(
         },
         imagen: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         descripcion: {
             type: DataTypes.STRING,
