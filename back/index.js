@@ -9,7 +9,7 @@ const morgan = require('morgan')
 async function checkAndSyncPostgreSQL() {
   await checkConnection()
   await addRelationsToModels()
-  await syncModels('force')
+  await syncModels('alter')
 }
 
 function initializeAndListenWithExpress() {
