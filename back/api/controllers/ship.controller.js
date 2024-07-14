@@ -1,3 +1,4 @@
+/*
 const Ship = require('../models/ship.model')
 const Client = require('../models/client.model')
 
@@ -103,3 +104,4 @@ module.exports = {
 	deleteShip,
 	getShipsByClientId
 }
+*/

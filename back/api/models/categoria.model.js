@@ -1,21 +1,21 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
-const Ship = sequelize.define(
-	'ship',
+const Categoria = sequelize.define(
+	'categoria',
 	{
-		brand: {
+		nombre: {
 			type: DataTypes.STRING(),
 			allowNull: false
 		  },
-		  model: {
+		  imagen: {
 			type: DataTypes.STRING(),
 			allowNull: false
 		  },
-		  registration_number: {
-			type: DataTypes.STRING(),
-			allowNull: false
-		  }
+          tienda: {
+            type: DataTypes.ENUM('elda', 'petrer'),
+            allowNull: false,
+        },
     },
 	{	
 		timestamps: false,
@@ -23,10 +23,10 @@ const Ship = sequelize.define(
 			{
 				unique: true,
 				allowNull: false,
-				fields: ['registration_number']
+				fields: ['nombre']
 			}
 		]
 	},
 )
 
-module.exports = Ship
+module.exports = Categoria

@@ -1,3 +1,6 @@
+/*
+
+
 const router = require('express').Router()
 
 const { getAllClients, getOneClient, createClient, updateClient, deleteClient} = require('../controllers/client.controller')
@@ -13,3 +16,5 @@ router.patch('/:id', checkAuth, isManager, updateClient)
 router.delete('/:id', checkAuth, isManager, deleteClient)
 
 module.exports = router
+
+*/

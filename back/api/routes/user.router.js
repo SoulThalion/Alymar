@@ -1,3 +1,5 @@
+/*
+
 const router = require('express').Router()
 
 const { getAllUsers, getOneUser, createUser, updateUser, deleteUser, getMyUser, getUserByToken } = require('../controllers/user.controller')
@@ -16,3 +18,4 @@ router.delete('/:id', checkAuth, isAdmin, deleteUser)
 
 
 module.exports = router
+*/

@@ -1,3 +1,5 @@
+/*
+
 const router = require('express').Router()
 
 const { getAllOrders, getOneOrder, createOrder, updateOrder, deleteOrder} = require('../controllers/order.controller')
@@ -13,3 +15,5 @@ router.patch('/:id', checkAuth, updateOrder)
 router.delete('/:id', checkAuth, isManager, deleteOrder)
 
 module.exports = router
+
+*/

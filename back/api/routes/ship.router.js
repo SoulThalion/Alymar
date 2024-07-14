@@ -1,3 +1,5 @@
+/*
+
 const router = require('express').Router()
 
 const { getAllShips, getOneShip, createShip, updateShip, deleteShip, getShipsByClientId} = require('../controllers/ship.controller')
@@ -14,3 +16,5 @@ router.patch('/:id', checkAuth, isManager, updateShip)
 router.delete('/:id', checkAuth, isManager, deleteShip)
 
 module.exports = router
+
+*/

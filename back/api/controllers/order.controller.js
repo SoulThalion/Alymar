@@ -1,3 +1,5 @@
+/*
+
 const Order = require('../models/order.model')
 const User = require('../models/user.model')
 const { Sequelize } = require('sequelize')
@@ -113,3 +115,5 @@ module.exports = {
 	updateOrder,
 	deleteOrder
 }
+
+*/
