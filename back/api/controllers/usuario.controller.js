@@ -1,5 +1,5 @@
 const User = require('../models/usuario.model')
-
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
 
 
@@ -9,7 +9,7 @@ const getAllUsers = async (req, res) => {
 			const users = await User.findAll({
 				where: req.query,
 				attributes: {
-					exclude: ['password']
+					exclude: ['contrasena']
 				}
 			})
 			return res.status(200).json(users)
@@ -25,7 +25,7 @@ const getOneUser = async (req, res) => {
 		try {
 			const user = await User.findByPk(req.params.id, {
 				attributes: {
-					exclude: ['password']
+					exclude: ['contrasena']
 				}
 			})
 
@@ -43,30 +43,43 @@ const getOneUser = async (req, res) => {
 
 const createUser = async (req, res) => {
 	try {
-
-		const saltRounds = bcrypt.genSaltSync(parseInt(10))
-		const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds)
-		req.body.password = hashedPassword
-
+		const { nombre, contrasena, tienda, role } = req.body;
+		const checkUser = await User.findOne({ where: { nombre: nombre } });
+	
+		if (checkUser)
+		  return res.status(403).json({
+			message: '>> Nombre exists!',
+		  });
+	
+		const hashedPassword = bcrypt.hashSync(contrasena, 10);
+	
 		const newUser = await User.create({
-			nombre: req.body.nombre,
-			password: req.body.password,
-			role: req.body.role,
-			tienda: req.body.tienda
-		})
-		res.status(200).json(newUser)
-	} catch (error) {
-		console.log(error)
-	}
+		  nombre,
+		  contrasena: hashedPassword,
+		  tienda,
+		  role
+		});
+	
+		const token = jwt.sign({ nombre: newUser.nombre }, process.env.JWT_SECRET, {
+		  expiresIn: '1d',
+		});
+	
+		delete newUser.contrasena;
+	
+		return res.status(200).json({ message: '>> Signed up!!', token });
+	  } catch (error) {
+		console.log(error);
+		return res.status(404).send('>> Oops something went wrong!');
+	  }
 }
 
 
 const updateUser = async (req, res) => {
 	try {
-		if (req.body.password) {
+		if (req.body.contrasena) {
 			const saltRounds = bcrypt.genSaltSync(parseInt(10))
-			const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds)
-			req.body.password = hashedPassword
+			const hashedPassword = bcrypt.hashSync(req.body.contrasena, saltRounds)
+			req.body.contrasena = hashedPassword
 		}
 
 
@@ -107,7 +120,7 @@ const getUserByToken = async (req, res) => {
 	try {
 
 		const userJSON = res.locals.user.toJSON()
-		delete userJSON.password
+		delete userJSON.contrasena
 
 		return res.status(200).json({ user: userJSON });
 	} catch (error) {

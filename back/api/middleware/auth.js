@@ -9,7 +9,7 @@ const checkAuth = (req, res, next) => {
       if (error) {
         return res.status(403).send('>> Login to continue!');
       }
-      const user = await User.findOne({ where: { userName: result.userName } });
+      const user = await User.findOne({ where: { nombre: result.nombre } });
       if (!user) {
         return res.status(403).send('>> Token not valid!');
       }
