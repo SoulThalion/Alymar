@@ -13,13 +13,9 @@ const Producto = sequelize.define(
             allowNull: false,
             defaultValue: 0
         },
-        cuantificable: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        },
         imagen: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         descripcion: {
             type: DataTypes.STRING,

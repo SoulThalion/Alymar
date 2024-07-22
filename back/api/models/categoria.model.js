@@ -10,7 +10,7 @@ const Categoria = sequelize.define(
 		  },
 		  imagen: {
 			type: DataTypes.STRING(),
-			allowNull: false
+			allowNull: true
 		  },
           tienda: {
             type: DataTypes.ENUM('elda', 'petrer'),

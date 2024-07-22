@@ -1,11 +1,10 @@
-
-
 const router = require('express').Router()
-/*
-router.use('/user', require('./user.router'))
 router.use('/auth', require('./auth.router'))
-router.use('/client', require('./client.router'))
-router.use('/ship', require('./ship.router'))
-router.use('/order', require('./order.router'))
-*/
+router.use('/usuario', require('./usuario.router'))
+router.use('/categoria', require('./categoria.router'))
+router.use('/producto', require('./producto.router'))
+router.use('/existencia', require('./existencia.router'))
+router.use('/pedido', require('./pedido.router'))
+router.use('/pedidoExistencia', require('./pedidoExistencia.router'))
+
 module.exports = router

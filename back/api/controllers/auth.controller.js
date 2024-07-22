@@ -1,35 +1,31 @@
-/*
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user.model');
+const User = require('../models/usuario.model');
 
 const signUp = async (req, res) => {
   try {
-    const { userName, password, email, telephone, name, surName, role } = req.body;
-    const checkUser = await User.findOne({ where: { email: email } });
+    const { nombre, contrasena, tienda, role } = req.body;
+    const checkUser = await User.findOne({ where: { nombre: nombre } });
 
     if (checkUser)
       return res.status(403).json({
-        message: '>> Email exists!',
+        message: '>> Nombre exists!',
       });
 
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = bcrypt.hashSync(contrasena, 10);
 
     const newUser = await User.create({
-      userName,
-      password: hashedPassword,
-      email,
-      telephone,
-      name,
-      surName,
+      nombre,
+      contrasena: hashedPassword,
+      tienda,
       role
     });
 
-    const token = jwt.sign({ email: newUser.email }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ nombre: newUser.nombre }, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
 
-    delete newUser.password;
+    delete newUser.contrasena;
 
     return res.status(200).json({ message: '>> Signed up!!', token });
   } catch (error) {
@@ -41,21 +37,21 @@ const signUp = async (req, res) => {
 
 const logIn = async (req, res) => {
   try {
-    const { userName, password } = req.body;
+    const { nombre, contrasena } = req.body;
 
-    const user = await User.findOne({ where: { userName } });
+    const user = await User.findOne({ where: { nombre } });
 
     if (user) {
-      bcrypt.compare(password, user.password, (err, result) => {
+      bcrypt.compare(contrasena, user.contrasena, (err, result) => {
         if (result) {
           const token = jwt.sign(
-            { userName: user.userName },
+            { nombre: user.nombre },
             process.env.JWT_SECRET,
             { expiresIn: '1y' }
           );
 
           const userJSON = user.toJSON()
-          delete userJSON.password
+          delete userJSON.contrasena
 
           return res.status(200).json({ token, user: userJSON });
         }
@@ -76,5 +72,3 @@ const logIn = async (req, res) => {
 };
 
 module.exports = { signUp, logIn };
-
-*/

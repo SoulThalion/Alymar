@@ -6,19 +6,15 @@ const Pedido = sequelize.define(
     {
         fechahora: {
             type: DataTypes.DATE,
-            allowNull: false
         },
         ticket: {
             type: DataTypes.INTEGER,
-            allowNull: false,
         },
         nombre: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         telefono: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         tienda: {
             type: DataTypes.ENUM('petrer', 'elda'),
@@ -26,13 +22,19 @@ const Pedido = sequelize.define(
         },
         estado: {
             type: DataTypes.ENUM('pendiente', 'finalizado', 'preparacion', 'caducado'),
-            allowNull: false,
+            defaultValue: "pendiente"
         },
         papelera: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
-      
+        observaciones:{
+            type: DataTypes.STRING,
+        },
+        pagado:{
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
       
        
     },
@@ -41,7 +43,6 @@ const Pedido = sequelize.define(
 		indexes: [
 			{
 				unique: true,
-				allowNull: false,
 				fields: ['telefono']
 			},
 
