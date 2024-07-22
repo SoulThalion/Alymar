@@ -6,19 +6,17 @@ const Existencia = sequelize.define(
 	{
 		cantidad: {
 			type: DataTypes.INTEGER(),
-			allowNull: false,
-            defaultValue: 0
 		  },
+        defecto:{
+            type: DataTypes.INTEGER(),
+            defaultValue: 0,
+        },
           pedidos: {
 			type: DataTypes.INTEGER(),
 			allowNull: false,
             defaultValue: 0
 		  },
-          tienda: {
-            type: DataTypes.ENUM('elda', 'petrer'),
-            allowNull: false,
-        },
-        fecha: {
+          fecha: {
             type: DataTypes.DATE,
             allowNull: false,
         },
