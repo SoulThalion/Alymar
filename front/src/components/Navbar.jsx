@@ -11,6 +11,7 @@ import LogOutIcon from "../icons/LogOutIcon";
 import ExistenciasButton from "./buttons/ExistenciasButton";
 import PapeleraButton from "./buttons/PapeleraButton";
 import CategoriasButton from "./buttons/CategoriasButton";
+import ProductosButton from "./buttons/ProductosButton";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -73,11 +74,13 @@ const Navbar = () => {
             <PedidosButton/>
             <ExistenciasButton />
             <PapeleraButton />
+            
             </>
             )}
             {(user?.role === "admin") && (
               <>
                 <CategoriasButton />
+                <ProductosButton />
                 <ClientsButton />
                 <UsersButton />
               </>
