@@ -8,6 +8,7 @@ import UsersButton from "./buttons/UsersButton";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import LogOutIcon from "../icons/LogOutIcon";
+import ExistenciasButton from "./buttons/ExistenciasButton";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -66,6 +67,7 @@ const Navbar = () => {
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
             <PedidosButton/>
+            <ExistenciasButton />
             {(user?.role === "admin" || user?.role === "manager") && (
               <>
                 <ClientsButton />
