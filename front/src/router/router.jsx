@@ -1,7 +1,7 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../layout/Layout";
 import Login from "../pages/Login";
-import Orders from "../pages/Orders";
+import Pedidos from "../pages/Pedidos";
 
 const isAuthenticated = () =>
   !localStorage.getItem("token") ? redirect("/login") : null;
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
         loader: isAuthenticated,
       },
       {
-        path: '/orders',
-        element: <Orders/>,
+        path: '/pedidos',
+        element: <Pedidos/>,
         loader: isAuthenticated,
       },
     ]}
