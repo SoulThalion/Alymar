@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import ExitIcon from "../icons/ExitIcon";
 import MenuIcon from "../icons/MenuIcon";
 import ClientsButton from "./buttons/ClientsButton";
 import LogOutButton from "./buttons/LogOutButton";
-import OrdersButton from "./buttons/OrdersButton";
+import PedidosButton from "./buttons/PedidosButton";
 import UsersButton from "./buttons/UsersButton";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
@@ -66,7 +65,7 @@ const Navbar = () => {
         
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
-            <OrdersButton/>
+            <PedidosButton/>
             {(user?.role === "admin" || user?.role === "manager") && (
               <>
                 <ClientsButton />

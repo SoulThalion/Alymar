@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import OrderIcon from "../../icons/OrderIcon";
 import { useEffect } from "react";
+import PedidoIcon from "../../icons/PedidoIcon";
 
 const OrdersButton = () => {
 
@@ -13,10 +13,10 @@ const OrdersButton = () => {
     <li>
       <a
         href="/orders"
-        className={`flex items-center p-2 text-white rounded-lg group ${location.pathname === "/orders" ? "bg-[#FF6600]" : ""}`}
+        className={`flex items-center p-2 pl-7 text-white rounded-lg group ${location.pathname === "/orders" ? "bg-[#FF6600]" : ""}`}
       >
-        <OrderIcon />
-        <span className="ms-3">Órdenes</span>
+        <PedidoIcon />
+        <span className="ms-3">Pedidos</span>
       </a>
     </li>
   );
