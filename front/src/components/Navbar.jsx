@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import MenuIcon from "../icons/MenuIcon";
-import ClientsButton from "./buttons/ClientsButton";
 import LogOutButton from "./buttons/LogOutButton";
 import PedidosButton from "./buttons/PedidosButton";
-import UsersButton from "./buttons/UsersButton";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import LogOutIcon from "../icons/LogOutIcon";
@@ -12,6 +10,7 @@ import ExistenciasButton from "./buttons/ExistenciasButton";
 import PapeleraButton from "./buttons/PapeleraButton";
 import CategoriasButton from "./buttons/CategoriasButton";
 import ProductosButton from "./buttons/ProductosButton";
+import UsuariosButton from "./buttons/UsuariosButton";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -81,8 +80,7 @@ const Navbar = () => {
               <>
                 <CategoriasButton />
                 <ProductosButton />
-                <ClientsButton />
-                <UsersButton />
+                <UsuariosButton />
               </>
             )}
             <LogOutButton />

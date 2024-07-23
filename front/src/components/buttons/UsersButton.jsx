@@ -1,4 +1,4 @@
-import UsersIcon from "../../icons/UsersIcon";
+import UsersIcon from "../../icons/UsuariosIcon";
 
 const UsersButton = () => {
   return (
