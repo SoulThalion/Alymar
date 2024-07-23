@@ -62,23 +62,11 @@ const Navbar = () => {
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
       >
-        <h5
-          id="drawer-navigation-label"
-          className="text-base font-semibold text-white uppercase"
-        >
-          Menu
-        </h5>
-        <button
-          type="button"
-          onClick={() => setIsDrawerOpen(false)} // Cerrar el drawer
-          className="text-white bg-transparent hover:bg-gray-800 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center"
-        >
-          <ExitIcon />
-          <span className="sr-only">Close menu</span>
-        </button>
+        
+        
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
-            <OrdersButton />
+            <OrdersButton/>
             {(user?.role === "admin" || user?.role === "manager") && (
               <>
                 <ClientsButton />
