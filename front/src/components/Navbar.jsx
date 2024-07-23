@@ -20,12 +20,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full border-b border-[#58aaae] text-white bg-[#1c1d20]">
+      <nav className="fixed top-0 z-50 w-full border-b border-[#58aaae] text-white bg-black">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
               <button
-                className="text-white mt-0 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+                className="text-white mt-0 font-medium rounded-lg text-sm px-5 py-2.5"
                 type="button"
                 onClick={() => setIsDrawerOpen(!isDrawerOpen)} // Alternar visibilidad del drawer
                 aria-controls="drawer-navigation"
@@ -34,9 +34,7 @@ const Navbar = () => {
               </button>
 
               <a href="/" className="flex ms-2 md:me-24">
-                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                  Alymar
-                </span>
+              <img src="../../public/logo.png" alt="logo" className="w-2/4"/>
               </a>
             </div>
           </div>
