@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import LogOutIcon from "../icons/LogOutIcon";
 import ExistenciasButton from "./buttons/ExistenciasButton";
+import PapeleraButton from "./buttons/PapeleraButton";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -68,6 +69,7 @@ const Navbar = () => {
           <ul className="space-y-2 font-medium">
             <PedidosButton/>
             <ExistenciasButton />
+            <PapeleraButton />
             {(user?.role === "admin" || user?.role === "manager") && (
               <>
                 <ClientsButton />
