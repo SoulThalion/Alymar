@@ -117,8 +117,8 @@ const deleteUser = async (req, res) => {
 }
 
 const getUserByToken = async (req, res) => {
+	console.log("hola")
 	try {
-
 		const userJSON = res.locals.user.toJSON()
 		delete userJSON.contrasena
 
