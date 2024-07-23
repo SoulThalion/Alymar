@@ -8,6 +8,7 @@ import OrdersButton from "./buttons/OrdersButton";
 import UsersButton from "./buttons/UsersButton";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
+import LogOutIcon from "../icons/LogOutIcon";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -17,6 +18,10 @@ const Navbar = () => {
   useEffect(() => {
     setIsDrawerOpen(false); // Cerrar el drawer cada vez que cambia la ruta
   }, [location]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <>
@@ -34,9 +39,16 @@ const Navbar = () => {
               </button>
 
               <a href="/" className="flex ms-2 md:me-24">
-              <img src="../../public/logo.png" alt="logo" className="w-2/4"/>
+                <img src="../../public/logo.png" alt="logo" className="w-2/4" />
               </a>
             </div>
+            <a
+              href="#"
+              onClick={handleLogout}
+              className="flex justify-end p-1 text-white rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group"
+            >
+              <LogOutIcon />
+            </a>
           </div>
         </div>
       </nav>
@@ -46,7 +58,7 @@ const Navbar = () => {
         id="drawer-navigation"
         className={`fixed mt-4 top-12 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-        } border-r border-[#58aaae] bg-[#1c1d20]`}
+        } border-r border-[#58aaae] bg-black`}
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
       >
@@ -67,12 +79,12 @@ const Navbar = () => {
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
             <OrdersButton />
-            {(user?.role === "admin" || user?.role === "manager") && 
+            {(user?.role === "admin" || user?.role === "manager") && (
               <>
                 <ClientsButton />
                 <UsersButton />
               </>
-            }
+            )}
             <LogOutButton />
           </ul>
         </div>
