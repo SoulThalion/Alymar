@@ -67,10 +67,14 @@ const Navbar = () => {
         
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
+          {(user?.role === "admin" || user?.role === "vendedor") && (
+            <>
             <PedidosButton/>
             <ExistenciasButton />
             <PapeleraButton />
-            {(user?.role === "admin" || user?.role === "manager") && (
+            </>
+            )}
+            {(user?.role === "admin") && (
               <>
                 <ClientsButton />
                 <UsersButton />
