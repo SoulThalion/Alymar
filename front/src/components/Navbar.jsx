@@ -10,6 +10,7 @@ import { UserContext } from "../context/userContext";
 import LogOutIcon from "../icons/LogOutIcon";
 import ExistenciasButton from "./buttons/ExistenciasButton";
 import PapeleraButton from "./buttons/PapeleraButton";
+import CategoriasButton from "./buttons/CategoriasButton";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -76,6 +77,7 @@ const Navbar = () => {
             )}
             {(user?.role === "admin") && (
               <>
+                <CategoriasButton />
                 <ClientsButton />
                 <UsersButton />
               </>
