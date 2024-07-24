@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
-//import { login } from "../services/auth.service";
+import { login } from "../services/auth.service";
 import OpenEyeIcon from "../icons/OpenEyeIcon";
 import CloseEyeIcon from "../icons/CloseEyeIcon";
 
@@ -15,7 +15,7 @@ const Login = () => {
 
   const [isPassVisible, setIsPassVisible] = useState(false);
 
-  /*const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const data = await login(userName, password);
 
@@ -24,7 +24,7 @@ const Login = () => {
       setUser(data.user);
       navigate("/");
     }
-  };*/
+  };
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -37,7 +37,7 @@ const Login = () => {
       <div className="flex flex-col justify-center items-center min-h-screen">
         <form
           className="w-full max-w-md rounded-lg p-0 border border-black shadow-xl"
-          //onSubmit={handleLogin}
+          onSubmit={handleLogin}
         >
           <div className="bg-black w-full flex justify-center items-center rounded-t-lg">
             <img src="../../public/logo.png" alt="logo" className="w-1/3 py-4"/>
@@ -72,7 +72,7 @@ const Login = () => {
               type={isPassVisible ? "text" : "password"}
               onChange={(e) => setPassword(e.target.value)}
               id="password"
-              className="bg-[#F4F4F4] border border-black text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              className="bg-[#F4F4F4] border border-black text-sm rounded-lg block w-full p-2.5 "
               placeholder="contraseña"
               required
             />
@@ -80,7 +80,7 @@ const Login = () => {
           <div className="flex justify-center p-6 px-10 pb-10">
             <button
               type="submit"
-              className="shadow-lg w-full text-white bg-[#FF6600] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center "
+              className="shadow-lg w-full text-white bg-[#FF6600] font-medium rounded-lg text-sm px-20 py-2.5 text-center "
             >
               Entrar
             </button>

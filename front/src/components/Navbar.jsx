@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import ExitIcon from "../icons/ExitIcon";
 import MenuIcon from "../icons/MenuIcon";
-import ClientsButton from "./buttons/ClientsButton";
 import LogOutButton from "./buttons/LogOutButton";
-import OrdersButton from "./buttons/OrdersButton";
-import UsersButton from "./buttons/UsersButton";
+import PedidosButton from "./buttons/PedidosButton";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
+import LogOutIcon from "../icons/LogOutIcon";
+import ExistenciasButton from "./buttons/ExistenciasButton";
+import PapeleraButton from "./buttons/PapeleraButton";
+import CategoriasButton from "./buttons/CategoriasButton";
+import ProductosButton from "./buttons/ProductosButton";
+import UsuariosButton from "./buttons/UsuariosButton";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -18,14 +21,18 @@ const Navbar = () => {
     setIsDrawerOpen(false); // Cerrar el drawer cada vez que cambia la ruta
   }, [location]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full border-b border-[#58aaae] text-white bg-[#1c1d20]">
+      <nav className="fixed top-0 z-50 w-full border-b border-[#58aaae] text-white bg-black">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
               <button
-                className="text-white mt-0 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+                className="text-white mt-0 font-medium rounded-lg text-sm px-5 py-2.5"
                 type="button"
                 onClick={() => setIsDrawerOpen(!isDrawerOpen)} // Alternar visibilidad del drawer
                 aria-controls="drawer-navigation"
@@ -34,11 +41,16 @@ const Navbar = () => {
               </button>
 
               <a href="/" className="flex ms-2 md:me-24">
-                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                  Alymar
-                </span>
+                <img src="../../public/logo.png" alt="logo" className="w-2/4" />
               </a>
             </div>
+            <a
+              href="#"
+              onClick={handleLogout}
+              className="flex justify-end p-1 text-white rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group"
+            >
+              <LogOutIcon />
+            </a>
           </div>
         </div>
       </nav>
@@ -48,33 +60,29 @@ const Navbar = () => {
         id="drawer-navigation"
         className={`fixed mt-4 top-12 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-        } border-r border-[#58aaae] bg-[#1c1d20]`}
+        } border-r border-[#58aaae] bg-black`}
         tabIndex="-1"
         aria-labelledby="drawer-navigation-label"
       >
-        <h5
-          id="drawer-navigation-label"
-          className="text-base font-semibold text-white uppercase"
-        >
-          Menu
-        </h5>
-        <button
-          type="button"
-          onClick={() => setIsDrawerOpen(false)} // Cerrar el drawer
-          className="text-white bg-transparent hover:bg-gray-800 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center"
-        >
-          <ExitIcon />
-          <span className="sr-only">Close menu</span>
-        </button>
+        
+        
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
-            <OrdersButton />
-            {(user?.role === "admin" || user?.role === "manager") && 
+          {(user?.role === "admin" || user?.role === "vendedor") && (
+            <>
+            <PedidosButton/>
+            <ExistenciasButton />
+            <PapeleraButton />
+            
+            </>
+            )}
+            {(user?.role === "admin") && (
               <>
-                <ClientsButton />
-                <UsersButton />
+                <CategoriasButton />
+                <ProductosButton />
+                <UsuariosButton />
               </>
-            }
+            )}
             <LogOutButton />
           </ul>
         </div>
