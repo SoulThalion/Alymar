@@ -14,7 +14,7 @@ const Usuario = sequelize.define(
         },
 
         tienda: {
-			type: DataTypes.STRING(),
+			type: DataTypes.ENUM('elda', 'petrer'),
 			allowNull: false
 		},
 

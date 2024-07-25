@@ -38,10 +38,11 @@ const signUp = async (req, res) => {
 const logIn = async (req, res) => {
   try {
     const { nombre, contrasena } = req.body;
-
+    console.log('Datos recibidos:', { nombre, contrasena });
     const user = await User.findOne({ where: { nombre } });
 
     if (user) {
+      console.log('Usuario encontrado:', user);
       bcrypt.compare(contrasena, user.contrasena, (err, result) => {
         if (result) {
           const token = jwt.sign(
@@ -57,7 +58,7 @@ const logIn = async (req, res) => {
         }
         return res
           .status(404)
-          .send('>> Oops something went wrong, user or password incorrect.');
+          .send('>> Oops something went wrong, user or password incorrect.' + err);
       });
     } else {
       return res

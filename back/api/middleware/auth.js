@@ -7,7 +7,7 @@ const checkAuth = (req, res, next) => {
     process.env.JWT_SECRET,
     async (error, result) => {
       if (error) {
-        return res.status(403).send('>> Login to continue!');
+        return res.status(403).send('>> Login to continue!' + error);
       }
       const user = await User.findOne({ where: { nombre: result.nombre } });
       if (!user) {

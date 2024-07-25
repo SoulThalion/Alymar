@@ -6,7 +6,11 @@ export default {
     "./node_modules/tailwind-datepicker-react/dist/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'naranja': '#FF6600'
+      }
+    },
     borderWidth: {
       DEFAULT: '1px',
       '0': '0',

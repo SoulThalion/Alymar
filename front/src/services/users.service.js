@@ -3,7 +3,7 @@ import app from './config'
 export const getAllUsers = async () => {
     const token = localStorage.getItem('token');
     try {
-        const { data } = await app.get('/user', {
+        const { data } = await app.get('/usuario', {
             headers: {
                 token: token
             }
