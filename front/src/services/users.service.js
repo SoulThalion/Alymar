@@ -16,18 +16,15 @@ export const getAllUsers = async () => {
     }
 }
 
-export const createUser = async (userName, name, surName, telephone, email, password, role) => {
+export const createUser = async (nombre, contrasena, tienda, role) => {
     const token = localStorage.getItem('token');
 
     try {
         // Realizar la solicitud POST para crear un nuevo usuario
-        const { data } = await app.post('/user', {
-            userName: userName,
-            name: name,
-            surName: surName,
-            telephone: telephone,
-            email: email,
-            password: password,
+        const { data } = await app.post('/usuario/', {
+            nombre: nombre,
+            contrasena: contrasena,
+            tienda: tienda,
             role: role
         }, {
             headers: {
