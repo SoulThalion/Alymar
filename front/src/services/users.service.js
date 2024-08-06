@@ -40,26 +40,26 @@ export const createUser = async (nombre, contrasena, tienda, role) => {
     }
 };
 
-export const updateUser = async (id, userName, name, surName, telephone, email, password, role) => {
+export const updateUser = async (id, nombre, contrasena, tienda, role) => {
     const token = localStorage.getItem('token');
 
     try {
         // Realizar la solicitud PATCH para editar un nuevo usuario
         const userData = {
-            userName: userName,
-            name: name,
-            surName: surName,
-            telephone: telephone,
-            email: email,
-            role: role
+            id: id,
+            nombre: nombre,
+            contrasena: contrasena,
+            tienda: tienda,
+            role: role,
+    
         };
     
         // Añadir la contraseña al objeto userData solo si no está vacía
-        if (password !== '') {
-            userData.password = password;
-        }
+      //  if (contrasena !== '') {
+       //     userData.contrasena = contrasena;
+       // }
     
-        const { data } = await app.patch(`/user/${id}`, userData, {
+        const { data } = await app.patch(`/usuario/${id}`, userData, {
             headers: {
                 token: token // Incluir el token en el encabezado de autorización
             }
@@ -68,7 +68,7 @@ export const updateUser = async (id, userName, name, surName, telephone, email, 
     return data; // Devolver los datos del usuario editado
 
 } catch (error) {
-    console.error('Error al crear el usuario:', error);
+    console.error('Error al modificar el usuario:', error);
     throw error; // Propagar el error para que pueda ser manejado por el código que llama a esta función
 }
 };
@@ -78,7 +78,7 @@ export const deleteUser = async (id) => {
     console.log(id)
     const ide= id
     try {   
-        await app.delete(`/user/${ide}`, {
+        await app.delete(`/usuario/${ide}`, {
             headers: {
                 token: token // Incluir el token en el encabezado de autorización
             }
