@@ -10,7 +10,7 @@ const LogOutButton = () => {
     <li>
       <a href="#"
         onClick={handleLogout}
-        className="flex items-center p-1 text-white rounded-lg dark:text-white hover:bg-gray-800 dark:hover:bg-gray-700 group"
+        className={`flex items-center p-2 pl-7 text-white rounded-lg group`}
       >
         <LogOutIcon />
         <span className="flex-1 ms-3 whitespace-nowrap">Cerrar Sesión</span>
