@@ -128,5 +128,6 @@ export const getUserByToken = async () => {
   
     } catch (error) {
       console.log('Error getting user data: ', error.message)
+      localStorage.removeItem('token');
     }
   }
