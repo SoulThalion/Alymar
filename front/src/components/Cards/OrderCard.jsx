@@ -1,12 +1,12 @@
 import EditIcon from "../../icons/EditIcon";
 import PapeleraIcon from "../../icons/PapeleraIcon";
 
-const OrderCard = () => {
+const OrderCard = ({id, fechahora, ticket, nombre, telefono, tienda, estado, papelera, observaciones, pagado}) => {
   return (
-    <div className="bg-gray-200 w-72 p-4 rounded-2xl shadow-lg text-md flex flex-col">
+    <div className={`${estado === "pendiente" ? "bg-[#FED7AA]" : estado === "preparacion" ? "bg-gray-200" : "bg-[#F7CECE]"}  bg-gray-200 w-72 p-4 rounded-2xl shadow-lg text-md flex flex-col`}>
       {/*cabecera*/}
 
-      <div className="grid grid-cols-2 text-gray-700 mb-2 bg-gray-400 -m-4 rounded-t-2xl">
+      <div className={`${estado === "pendiente" ? "bg-[#F97316]" : estado === "preparacion" ? "bg-gray-400" : "bg-red-600"} grid grid-cols-2 text-gray-700 mb-2 -m-4 rounded-t-2xl`}>
         {/* Fecha y hora */}
         <div className="col-start-1 row-start-1 text-white font-bold px-4 py-2">
           <p>05/06/2024</p>
@@ -30,17 +30,17 @@ const OrderCard = () => {
 
       {/*Datos personales*/}
       <div className="flex flex-col ml-5">
-      <span>
-        <strong>No: </strong>23
-      </span>
-      <div className="text-gray-700">
-        <p>
-          <strong>Nombre:</strong> María
-        </p>
-        <p>
-          <strong>Tlf:</strong> 698 523 654
-        </p>
-      </div>
+        <span>
+          <strong>No: </strong>{ticket}
+        </span>
+        <div className="text-gray-700">
+          <p>
+            <strong>Nombre:</strong> {nombre}
+          </p>
+          <p>
+            <strong>Tlf:</strong> {telefono}
+          </p>
+        </div>
       </div>
 
       {/*fin de datos personales*/}
@@ -51,25 +51,45 @@ const OrderCard = () => {
         <div className="bg-white p-4 my-2 rounded-lg max-w-56">
           <div className="space-y-2">
             <div>
-              <input type="radio" name="order" id="medioPollo" />
+              <input
+                type="checkbox"
+                className="rounded-full"
+                name="order"
+                id="medioPollo"
+              />
               <label htmlFor="medioPollo" className="ml-2">
                 Medio Pollo
               </label>
             </div>
             <div>
-              <input type="radio" name="order" id="tarrinaPatatas" />
+              <input
+                type="checkbox"
+                className="rounded-full"
+                name="order"
+                id="tarrinaPatatas"
+              />
               <label htmlFor="tarrinaPatatas" className="ml-2">
                 Tarrina Mediana Patatas
               </label>
             </div>
             <div>
-              <input type="radio" name="order" id="ensaladilla" />
+              <input
+                type="checkbox"
+                className="rounded-full"
+                name="order"
+                id="ensaladilla"
+              />
               <label htmlFor="ensaladilla" className="ml-2">
                 Ensaladilla
               </label>
             </div>
             <div>
-              <input type="radio" name="order" id="pan" />
+              <input
+                type="checkbox"
+                className="rounded-full"
+                name="order"
+                id="pan"
+              />
               <label htmlFor="pan" className="ml-2">
                 Pan
               </label>
@@ -85,17 +105,15 @@ const OrderCard = () => {
       <div className="text-gray-700 mt-3 mb-2 flex justify-center">
         <p className="space-x-3">
           <strong>Estado:</strong>{" "}
-          <span className="bg-cyan-400 text-white px-5 py-2">
-            Preparación
-          </span>
+          <span className={`${estado === "pendiente" ? "bg-amber-400 text-black" : estado === "preparacion" ? "bg-cyan-400 text-black" : "bg-red-600 text-white"} px-5 py-2`}>{estado}</span>
         </p>
       </div>
 
       <div className="flex justify-between mt-4">
-        <button className="bg-orange-400 text-white py-1 px-3 rounded-lg">
+        <button className="bg-orange-400 text-white py-2 px-3 rounded-3xl w-1/2 mx-1">
           Cancelar
         </button>
-        <button className="bg-red-400 text-white py-1 px-3 rounded-lg">
+        <button className="bg-white text-orange-500 py-2 px-3 rounded-3xl w-1/2 mx-1">
           Finalizar
         </button>
       </div>
