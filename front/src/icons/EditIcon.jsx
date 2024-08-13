@@ -1,7 +1,7 @@
 const EditIcon = () => {
   return (
     <svg
-      className="lg:w-5 lg:h-5 w-9 h-9"
+      className="w-6 h-6"
       data-slot="icon"
       fill="none"
       strokeWidth="1.5"

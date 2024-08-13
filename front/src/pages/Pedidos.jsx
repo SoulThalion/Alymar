@@ -1,7 +1,13 @@
+import OrderCard from "../components/Cards/OrderCard";
+
 const Pedidos = () => {
   return (
-    <p className="text-black mt-20">hola</p>
-  )
-}
+    <>
+      <div className="pt-32 p-20">
+        <OrderCard />
+      </div>
+    </>
+  );
+};
 
-export default Pedidos
+export default Pedidos;
