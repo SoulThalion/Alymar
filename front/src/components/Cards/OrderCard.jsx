@@ -1,12 +1,39 @@
 import EditIcon from "../../icons/EditIcon";
 import PapeleraIcon from "../../icons/PapeleraIcon";
 
-const OrderCard = ({id, fechahora, ticket, nombre, telefono, tienda, estado, papelera, observaciones, pagado}) => {
+const OrderCard = ({
+  id,
+  fechahora,
+  ticket,
+  nombre,
+  telefono,
+  tienda,
+  estado,
+  papelera,
+  observaciones,
+  pagado,
+}) => {
   return (
-    <div className={`${estado === "pendiente" ? "bg-[#FED7AA]" : estado === "preparacion" ? "bg-gray-200" : "bg-[#F7CECE]"}  bg-gray-200 w-72 p-4 rounded-2xl shadow-lg text-md flex flex-col`}>
+    <div
+      className={`${
+        estado === "pendiente"
+          ? "bg-[#FED7AA]"
+          : estado === "preparacion"
+          ? "bg-gray-200"
+          : "bg-[#F7CECE]"
+      }  bg-gray-200 w-72 p-4 rounded-2xl shadow-lg text-md flex flex-col`}
+    >
       {/*cabecera*/}
 
-      <div className={`${estado === "pendiente" ? "bg-[#F97316]" : estado === "preparacion" ? "bg-gray-400" : "bg-red-600"} grid grid-cols-2 text-gray-700 mb-2 -m-4 rounded-t-2xl`}>
+      <div
+        className={`${
+          estado === "pendiente"
+            ? "bg-[#F97316]"
+            : estado === "preparacion"
+            ? "bg-gray-400"
+            : "bg-red-600"
+        } grid grid-cols-2 text-gray-700 mb-2 -m-4 rounded-t-2xl`}
+      >
         {/* Fecha y hora */}
         <div className="col-start-1 row-start-1 text-white font-bold px-4 py-2">
           <p>05/06/2024</p>
@@ -31,7 +58,8 @@ const OrderCard = ({id, fechahora, ticket, nombre, telefono, tienda, estado, pap
       {/*Datos personales*/}
       <div className="flex flex-col ml-5">
         <span>
-          <strong>No: </strong>{ticket}
+          <strong>No: </strong>
+          {ticket}
         </span>
         <div className="text-gray-700">
           <p>
@@ -47,8 +75,8 @@ const OrderCard = ({id, fechahora, ticket, nombre, telefono, tienda, estado, pap
 
       {/*Contenido del pedido*/}
 
-      <div className="flex justify-center">
-        <div className="bg-white p-4 my-2 rounded-lg max-w-56">
+      <div className="flex justify-center max-h-44">
+        <div className="bg-white p-4 my-2 rounded-lg overflow-y-auto max-w-56 scrollbar-hide custom-scrollbar">
           <div className="space-y-2">
             <div>
               <input
@@ -61,6 +89,18 @@ const OrderCard = ({id, fechahora, ticket, nombre, telefono, tienda, estado, pap
                 Medio Pollo
               </label>
             </div>
+            <div>
+              <input
+                type="checkbox"
+                className="rounded-full"
+                name="order"
+                id="medioPollo"
+              />
+              <label htmlFor="medioPollo" className="ml-2">
+                Medio Pollo
+              </label>
+            </div>
+
             <div>
               <input
                 type="checkbox"
@@ -100,12 +140,32 @@ const OrderCard = ({id, fechahora, ticket, nombre, telefono, tienda, estado, pap
 
       {/*fin del contendio del pedido*/}
 
+      {/*Observaciones*/}
+
+      <div className="flex justify-center py-1">
+        <div className="bg-white w-56 h-12 max-h-12 rounded-lg py-1 px-2 overflow-y-auto scrollbar-hide custom-scrollbar">
+          {observaciones === null ? "Sin observaciones" : observaciones}
+        </div>
+      </div>
+
+      {/*fin de observaciones*/}
+
       {/*Estado y botones*/}
 
       <div className="text-gray-700 mt-3 mb-2 flex justify-center">
         <p className="space-x-3">
           <strong>Estado:</strong>{" "}
-          <span className={`${estado === "pendiente" ? "bg-amber-400 text-black" : estado === "preparacion" ? "bg-cyan-400 text-black" : "bg-red-600 text-white"} px-5 py-2`}>{estado}</span>
+          <span
+            className={`${
+              estado === "pendiente"
+                ? "bg-[#FAFF00] text-black"
+                : estado === "preparacion"
+                ? "bg-cyan-400 text-black"
+                : "bg-red-600 text-white"
+            } px-5 py-2`}
+          >
+            {estado}
+          </span>
         </p>
       </div>
 
